@@ -21,6 +21,7 @@ class CreateOrdersTable extends Migration
             $table->text('customer_tel')->default(null);
             $table->json('order')->default(null);;
             $table->dateTime('delivery');
+            $table->double('total', 5, 2);
             $table->text('comments')->default(null);
             $table->boolean('status')->default(0);;
         });
