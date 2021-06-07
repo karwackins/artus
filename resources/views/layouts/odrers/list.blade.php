@@ -29,7 +29,7 @@
                     {{$order['customer_tel']}}
                 </td>
                 <td>
-                    {{$order['delivery']}}
+                    {{$order['delivery']}} {{strftime('%a', strtotime(iconv("ISO-8859-2","UTF-8",ucfirst(strftime($order['delivery'])))))}}
                 </td>
                 <td>
                     {{$order['comments']}}
@@ -42,10 +42,16 @@
                     <button class="btn-sm btn-outline-primary">Wydruk dla Klienta</button>
                 </td>
                 <td>
-                    <a href="/order/{{$order['id']}}/edit" class="btn-sm btn-success">Edycja</a>
-                    <form action="/order/{{$order['id']}}" method="DELETE">
-                        <button type="submit" class="btn-sm btn-danger">Usuń</button>
-                    </form>
+                    <div class="d-block">
+                        <form action="/order/{{$order['id']}}" method="POST">
+                            <a href="/edit-customer/{{$order['id']}}" class="btn-sm btn-success">Edycja danych Klienta</a>
+                            <a href="/order/{{$order['id']}}/edit" class="btn-sm btn-success">Edycja zamówienia</a>
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <button type="submit" class="btn-sm btn-group-sm btn-danger delete-user">Usuń</button>
+                            <a href="/update-status/{{$order['id']}}" class="btn-sm btn-group-sm btn-primary">Zrealizowane</a>
+                        </form>
+                    </div>
                 </td>
             </tr>
         @endforeach

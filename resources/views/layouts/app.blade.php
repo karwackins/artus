@@ -20,7 +20,7 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#!">Start Bootstrap</a>
+            <a class="navbar-brand" href="#!">Artus Zamówienia</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
@@ -31,7 +31,7 @@
                         </a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="/orders">Zamówienia bieżące</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">Zamówienia historyczne</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/orders-history">Zamówienia historyczne</a></li>
                     <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
                 </ul>
             </div>
