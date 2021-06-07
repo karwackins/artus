@@ -29,10 +29,10 @@ class PrinterController extends TCPDF
         $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
 // set default header data
-        $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE . ' 011', PDF_HEADER_STRING);
+//        $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE . ' 011', PDF_HEADER_STRING);
 
 // set header and footer fonts
-        $pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+//        $pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
         $pdf->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
 
 // set default monospaced font
@@ -40,7 +40,7 @@ class PrinterController extends TCPDF
 
 // set margins
         $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-        $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+//        $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
         $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
 // set auto page breaks
@@ -83,6 +83,15 @@ class PrinterController extends TCPDF
         $pdf->Ln(6);
         $pdf->Write('0', 'Uwagi :'. $data->comments);
         $pdf->Ln(6);
+        if($data->dowoz == 1)
+        {
+            $pdf->Write('0', 'Dowóz do Klienta');
+            $pdf->Ln(6);
+        }else
+        {
+            $pdf->Write('0', 'Odbiór osobisty');
+            $pdf->Ln(6);
+        }
 // print colored table
         $pdf->ColoredTable($header, $data);
 

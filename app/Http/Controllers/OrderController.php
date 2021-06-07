@@ -100,6 +100,7 @@ class OrderController extends Controller
         public function update(Request $request, $id)
         {
             $order = Order::find($id);
+            $dowoz = $request->dowoz?$request->dowoz:0;
 
             if(isset($request->customer))
             {
@@ -107,6 +108,7 @@ class OrderController extends Controller
                 $order->customer_tel = $request->customer_tel;
                 $order->customer_email = $request->customer_email;
                 $order->delivery = $request->delivery;
+                $order->dowoz = $dowoz;
                 $order->comments = $request->comments;
             }else
             {
@@ -157,12 +159,14 @@ class OrderController extends Controller
 
         public function addCustomer(Request $request)
         {
+            $dowoz = $request->dowoz?$request->dowoz:0;
             $customer = [
                 "customer_name" => $request->customer_name,
                 "customer_tel" => $request->customer_tel,
                 "customer_email" => $request->customer_email,
                 "delivery" => $request->delivery,
-                "comments" => $request->comments
+                "comments" => $request->comments,
+                "dowoz" => $dowoz,
             ];
             session()->put('customer', $customer);
 
@@ -178,6 +182,7 @@ class OrderController extends Controller
             "customer_tel" => $order->customer_tel,
             "customer_email" => $order->customer_email,
             "delivery" => $order->delivery,
+            "dowoz" => $order->dowoz,
             "comments" => $order->comments
         ];
         return view('layouts/odrers/edit_customer', ['customer' => $customer]);
@@ -198,6 +203,7 @@ class OrderController extends Controller
                 'delivery' => $customer['delivery'],
                 'total' => $request->total,
                 'comments' => $customer['comments'],
+                'dowoz' => $customer['dowoz'],
                 'status' => 1,
             ]);
 

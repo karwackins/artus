@@ -21,6 +21,9 @@
                         <label for="exampleFormControlInput1" class="form-label">Uwagi do zamówienia</label>
                         <textarea class="form-control m-3" name="comments" id="" cols="30" rows="5" placeholder="Uwagi"></textarea>
                         <br />
+                        <input type="checkbox" name="dowoz" checked value="1"> Dowóz do Klienta
+                        <br />
+                        <br />
                         <button type="submit" class="btn btn-lg btn-success">Dalej</button>
                     </form>
                 </div>

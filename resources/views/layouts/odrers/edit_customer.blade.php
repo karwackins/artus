@@ -23,6 +23,14 @@
                         <label for="exampleFormControlInput1" class="form-label">Uwagi do zamówienia</label>
                         <textarea class="form-control m-3" name="comments" id="" cols="30" rows="5" placeholder="Uwagi">{{$customer['comments']}}</textarea>
                         <br />
+                        <br />
+                        @if($customer['dowoz'] == 1)
+                            <input type="checkbox" name="dowoz" value="1" checked> Dowóz do Klienta
+                        @else
+                            <input type="checkbox" name="dowoz" value="1"> Dowóz do Klienta
+                        @endif
+                        <br />
+                        <br />
                         <button type="submit" class="btn btn-lg btn-success">Aktualizuj dane Klienta</button>
                     </form>
                 </div>

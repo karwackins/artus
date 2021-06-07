@@ -18,6 +18,7 @@ class Order extends Model
         'order',
      'delivery',
      'comments',
+     'dowoz',
        'status',
         'total'];
 }
