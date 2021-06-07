@@ -118,4 +118,12 @@
         </div>
 
     </div>
+
+    <script>
+        $('tr').on('click', function (e) {
+            e.preventDefault();
+            var elem = $(this).next('form')
+            elem.toggle('slow');
+        });
+    </script>
 @endsection
