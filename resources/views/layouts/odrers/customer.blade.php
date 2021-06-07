@@ -16,8 +16,8 @@
                         <input type="text" class="form-control m-3" name="customer_tel" placeholder="Numer telefonu">
                         <label for="exampleFormControlInput1" class="form-label">Email Klienta</label>
                         <input type="email" class="form-control m-3" name="customer_email" placeholder="Email Klienta">
-                        <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                        <input type="date" class="form-control m-3" name="delivery" placeholder="Data dostawy">
+                        <label for="exampleFormControlInput1" class="form-label">Data dostawy</label>
+                        <input type="datetime-local" class="form-control m-3" name="delivery" placeholder="Data dostawy">
                         <label for="exampleFormControlInput1" class="form-label">Email address</label>
                         <textarea class="form-control m-3" name="comments" id="" cols="30" rows="5" placeholder="Uwagi"></textarea>
                         <br />

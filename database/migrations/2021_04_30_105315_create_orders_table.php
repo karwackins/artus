@@ -19,6 +19,7 @@ class CreateOrdersTable extends Migration
             $table->tinyInteger('user_id');
             $table->text('customer_name')->default(null);
             $table->text('customer_tel')->default(null);
+            $table->text('customer_email')->default(null);
             $table->json('order')->default(null);;
             $table->dateTime('delivery');
             $table->double('total', 5, 2);
