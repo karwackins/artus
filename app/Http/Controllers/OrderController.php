@@ -105,7 +105,7 @@ class OrderController extends Controller
             {
                 $order->customer_name = $request->customer_name;
                 $order->customer_tel = $request->customer_tel;
-                $order->customer_tel = $request->customer_email;
+                $order->customer_email = $request->customer_email;
                 $order->delivery = $request->delivery;
                 $order->comments = $request->comments;
             }else
