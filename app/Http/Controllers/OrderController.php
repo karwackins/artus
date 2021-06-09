@@ -104,6 +104,13 @@ class OrderController extends Controller
 
             if(isset($request->customer))
             {
+                $data = request()->validate([
+                    "customer_name" => 'required',
+                    "customer_tel" => 'required',
+                    "customer_email" => 'required|email',
+                    "delivery" => 'required',
+                ]);
+
                 $order->customer_name = $request->customer_name;
                 $order->customer_tel = $request->customer_tel;
                 $order->customer_email = $request->customer_email;
@@ -159,6 +166,12 @@ class OrderController extends Controller
 
         public function addCustomer(Request $request)
         {
+            $data = request()->validate([
+                "customer_name" => 'required',
+                "customer_tel" => 'required',
+                "customer_email" => 'required|email',
+                "delivery" => 'required',
+            ]);
             $dowoz = $request->dowoz?$request->dowoz:0;
             $customer = [
                 "customer_name" => $request->customer_name,

@@ -13,13 +13,17 @@
                         <input type="hidden" name="_method" value="PUT">
                         <input type="hidden" name="customer" value="1">
                         <label for="exampleFormControlInput1" class="form-label">Imię i nazwisko</label>
-                        <input type="text" class="form-control m-3" name="customer_name" value="{{$customer['customer_name']}}" placeholder="Nazwa Klienta">
+                        <input type="text" class="form-control{{ $errors->has('customer_name') ? ' is-invalid' : '' }}" name="customer_name" value="{{$customer['customer_name']}}" placeholder="Nazwa Klienta">
+                        @error('customer_name') {{$message}} @enderror
                         <label for="exampleFormControlInput1" class="form-label">Numer telefonu</label>
-                        <input type="text" class="form-control m-3" name="customer_tel" value="{{$customer['customer_tel']}}" placeholder="Numer telefonu">
+                        <input type="text" class="form-control{{ $errors->has('customer_tel') ? ' is-invalid' : '' }}" name="customer_tel" value="{{$customer['customer_tel']}}" placeholder="Numer telefonu">
+                        @error('customer_tel') {{$message}} @enderror
                         <label for="exampleFormControlInput1" class="form-label">Email Klienta</label>
-                        <input type="email" class="form-control m-3" name="customer_email" value="{{$customer['customer_email']}}" placeholder="Email Klienta">
+                        <input type="email" class="form-control{{ $errors->has('customer_email') ? ' is-invalid' : '' }}" name="customer_email" value="{{$customer['customer_email']}}" placeholder="Email Klienta">
+                        @error('customer_email') {{$message}} @enderror
                         <label for="exampleFormControlInput1" class="form-label">Data zamówienia</label>
-                        <input type="datetime-local" class="form-control m-3" name="delivery" value="{{date('Y-m-d\TH:i', strtotime($customer['delivery']))}}" placeholder="Data dostawy">
+                        <input type="datetime-local" class="form-control{{ $errors->has('delivery') ? ' is-invalid' : '' }}" name="delivery" value="{{date('Y-m-d\TH:i', strtotime($customer['delivery']))}}" placeholder="Data dostawy">
+                        @error('delivery') {{$message}} @enderror
                         <label for="exampleFormControlInput1" class="form-label">Uwagi do zamówienia</label>
                         <textarea class="form-control m-3" name="comments" id="" cols="30" rows="5" placeholder="Uwagi">{{$customer['comments']}}</textarea>
                         <br />

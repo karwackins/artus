@@ -11,13 +11,21 @@
                     <form action="/add-customer" method="POST">
                     @csrf <!-- {{ csrf_field() }} -->
                         <label for="exampleFormControlInput1" class="form-label">Imię i nazwisko</label>
-                        <input type="text" class="form-control m-3" name="customer_name" placeholder="Nazwa Klienta">
+                        <input type="text" class="form-control{{ $errors->has('customer_name') ? ' is-invalid' : '' }}" name="customer_name" value="{{ old('customer_name') }}" placeholder="Nazwa Klienta">
+                        @error('customer_name') {{$message}} @enderror
+                        <br>
                         <label for="exampleFormControlInput1" class="form-label">Numer telefonu</label>
-                        <input type="text" class="form-control m-3" name="customer_tel" placeholder="Numer telefonu">
+                        <input type="text" class="form-control{{ $errors->has('customer_tel') ? ' is-invalid' : '' }}" name="customer_tel" value="{{ old('customer_tel') }}" placeholder="Numer telefonu">
+                        @error('customer_tel') {{$message}} @enderror
+                        <br>
                         <label for="exampleFormControlInput1" class="form-label">Email Klienta</label>
-                        <input type="email" class="form-control m-3" name="customer_email" placeholder="Email Klienta">
+                        <input type="text" class="form-control{{ $errors->has('customer_email') ? ' is-invalid' : '' }}" name="customer_email" value="{{ old('customer_email') }}" placeholder="Email Klienta">
+                        @error('customer_email') {{$message}} @enderror
+                        <br>
                         <label for="exampleFormControlInput1" class="form-label">Data dostawy</label>
-                        <input type="datetime-local" class="form-control m-3" name="delivery" placeholder="Data dostawy">
+                        <input type="datetime-local" class="form-control{{ $errors->has('delivery') ? ' is-invalid' : '' }}" name="delivery" value="{{ old('delivery') }}" placeholder="Data dostawy">
+                        @error('delivery') {{$message}} @enderror
+                        <br>
                         <label for="exampleFormControlInput1" class="form-label">Uwagi do zamówienia</label>
                         <textarea class="form-control m-3" name="comments" id="" cols="30" rows="5" placeholder="Uwagi"></textarea>
                         <br />
