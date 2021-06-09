@@ -20,63 +20,28 @@
                         @foreach($category->products as $product)
                         <div id="collapseOne_{{$loop_index}}" class="collapse" aria-labelledby="headingOne_{{$loop->index}}" data-parent="#accordion">
                             <div class="card-body">
+                                <table class="table">
+                                    <thead></thead>
+                                    <tbody>
                                 <form action="/add-to-cart" method="POST">
                                     <input value="{{$product->id}}" hidden name="product_id" />
+
+                                            <tr>
+                                                <td width="60%">{{ $product->nazwa }}</td>
+                                                <td width="20%"><input type="number" class="form-control" name="quantity" /></td>
+                                                <td width="20%"><button class="btn btn-outline-success btn-block btn-sm" type="submit">Dodaj</button></td>
+                                            </tr>
+
                                 @csrf <!-- {{ csrf_field() }} -->
-                                    <tr>
-                                        <td>{{ $product->nazwa }}</td>
-                                        <td><input type="number" class="form-control" name="quantity" /></td>
-                                        <td><button class="btn btn-outline-success btn-block btn-sm" type="submit">Dodaj</button></td>
-                                    </tr>
                                 </form>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                         @endforeach
                     </div>
                     @endforeach
                 </div>
-{{--                <div class="card h-200">--}}
-{{--                    <div class="card-body">--}}
-{{--                        <table class="table">--}}
-{{--                            <thead>--}}
-{{--                            <th>Nazwa</th>--}}
-{{--                            <th>ilość</th>--}}
-{{--                            <th>cena/szt.</th>--}}
-{{--                            <th></th>--}}
-{{--                            </thead>--}}
-{{--                            <tbody>--}}
-{{--                            <tr class="table-primary"><td colspan="3"><strong>Patery</strong></td></tr>--}}
-{{--                            @foreach($plates as $plate )--}}
-
-{{--                                <form action="/add-to-cart" method="POST">--}}
-{{--                                @csrf <!-- {{ csrf_field() }} -->--}}
-{{--                                    <input hidden name="plate" value="1" />--}}
-{{--                                    <input value="{{$plate->id}}" hidden name="plate_id" />--}}
-{{--                                    <tr>--}}
-{{--                                        <td>{{ $plate->nazwa }} </td>--}}
-{{--                                        <td><input type="number" class="form-control" name="quantity" /></td>--}}
-{{--                                        <td><button class="btn btn-outline-success btn-block btn-sm" type="submit">Dodaj</button></td>--}}
-{{--                                    </tr>--}}
-{{--                                </form>--}}
-{{--                            @endforeach--}}
-{{--                            @foreach($categories as $category )--}}
-{{--                                <tr class="table-primary"><td colspan="3"><button id="tr1">{{$category->nazwa}}</button></td></tr>--}}
-{{--                                @foreach($category->products as $product)--}}
-{{--                                    <form id="form1" action="/add-to-cart" method="POST">--}}
-{{--                                        <input value="{{$product->id}}" hidden name="product_id" />--}}
-{{--                                    @csrf <!-- {{ csrf_field() }} -->--}}
-{{--                                        <tr>--}}
-{{--                                            <td>{{ $product->nazwa }}</td>--}}
-{{--                                            <td><input type="number" class="form-control" name="quantity" /></td>--}}
-{{--                                            <td><button class="btn btn-outline-success btn-block btn-sm" type="submit">Dodaj</button></td>--}}
-{{--                                        </tr>--}}
-{{--                                    </form>--}}
-{{--                                @endforeach--}}
-{{--                            @endforeach--}}
-{{--                            </tbody>--}}
-{{--                        </table>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
             </div>
             <div class="col">
                 <div class="card h-100">

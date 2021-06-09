@@ -26,7 +26,7 @@ class ProductsController extends Controller
         $plates = Plate::with('products')->get();
 
 
-            return view('layouts/content', ['categories' => $categories, 'plates' => $plates]);
+            return view('layouts/content', ['categories.csv' => $categories, 'plates' => $plates]);
 
     }
 
