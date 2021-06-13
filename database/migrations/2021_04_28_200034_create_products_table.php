@@ -19,6 +19,8 @@ class CreateProductsTable extends Migration
             $table->text('nazwa')->default(0);
             $table->double('cena', 5, 2);
             $table->boolean('dostepny');
+            $table->float('ilosc');
+            $table->text('j.m');
         });
     }
 

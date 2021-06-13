@@ -1,22 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="alert-success">
+        @include('layouts/flash-message')
+    </div>
     <div class="row justify-content-center d-grid">
-        <div class="row">
-            <div class="col-md-6 mb-5">
-                <div class="card h-200">
-                    <div class="card-body">
-                        <table class="table">
-                            <thead>
-                            <th>Nazwa</th>
-                            <th>ilość</th>
-                            <th>cena/szt.</th>
-                            <th></th>
-                            </thead>
-                            <tbody>
-                            <tr class="table-primary"><td colspan="3"><strong>Patery</strong></td></tr>
-                            @foreach($plates as $plate )
-
+            <div class="col overflow-scroll" style="height: 500px">
+                <div id="accordion">
+                    @foreach($categories as $category )
+                    <?php $loop_index = $loop->index?>
+                    <div class="card">
+                        <div class="card-header" id="headingOne_{{$loop->index}}">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne_{{$loop->index}}" aria-expanded="false" aria-controls="collapseOne_{{$loop->index}}">
+                                    {{$category->nazwa}}
+                                </button>
+                            </h5>
+                        </div>
+                        @foreach($category->products as $product)
+                        <div id="collapseOne_{{$loop_index}}" class="collapse" aria-labelledby="headingOne_{{$loop->index}}" data-parent="#accordion">
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead></thead>
+                                    <tbody>
                                 <form action="/add-to-cart" method="POST">
                                 @csrf <!-- {{ csrf_field() }} -->
                                     <input hidden name="plate" value="1" />
@@ -45,9 +51,10 @@
                             </tbody>
                         </table>
                     </div>
+                    @endforeach
                 </div>
             </div>
-            <div class="col-md-6 mb-5">
+            <div class="col">
                 <div class="card h-100">
                     <div class="card-body">
                         <?php $total = 0 ?>
@@ -96,8 +103,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </div>
-
 @endsection
 
