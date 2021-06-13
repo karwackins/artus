@@ -137,7 +137,8 @@ class ProductsController extends Controller
                         "id" => $product->id,
                         "nazwa" => $product->nazwa,
                         "quantity" => $request->quantity,
-                        "cena" => $product->cena,
+                        "jm" => $request->jm,
+                        "cena" => $product->cena*$request->quantity,
                     ]
                 ];
 
@@ -164,7 +165,8 @@ class ProductsController extends Controller
             "id" => $product->id,
             "nazwa" => $product->nazwa,
             "quantity" => $request->quantity,
-            "cena" => $product->cena,
+            "jm" => $request->jm,
+            "cena" => $product->cena*$request->quantity,
         ];
 
         session()->put('cart', $cart);

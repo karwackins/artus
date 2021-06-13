@@ -36,7 +36,7 @@
                                     @csrf <!-- {{ csrf_field() }} -->
                                         <tr>
                                             <td>{{ $product->nazwa }}</td>
-                                            <td><input type="number" class="form-control" name="quantity" /></td>
+                                            <td><input {{ $product->jm == 'l' || $product->jm == 'kg' ? 'type=number step=0.25': 'type=number' }} class="form-control" name="quantity" /></td>
                                             <td><button class="btn btn-outline-success btn-block btn-sm" type="submit">Dodaj</button></td>
                                         </tr>
                                     </form>
@@ -67,7 +67,7 @@
 
                                     <tr>
                                         <td>{{ $details['nazwa'] }}</td>
-                                        <td>{{ $details['quantity'] }}</td>
+                                        <td>{{ $details['quantity'] }} {{$details['jm']}}</td>
                                         <td>{{ $details['cena'] }} zł</td>
                                         <td>
                                             <form action="/remove/{{$details['id']}}" method="POST">
