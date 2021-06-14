@@ -79,6 +79,7 @@ class OrderController extends Controller
          */
         public function edit($id)
         {
+            session()->put('edit', 1);
             $order = Order::find($id);
             if(empty(session()->get('cart')))
             {

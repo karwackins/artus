@@ -1,7 +1,6 @@
 <div class="card h-100">
     <div class="card-body">
         <?php $total = 0 ?>
-        @if(session('cart') && session('cart.edit') != 1)
             <table class="table table-striped">
                 <thead>
                 <th>Nazwa</th>
@@ -32,15 +31,7 @@
                 </tbody>
             </table>
             <hr>
-            <label for="suma">Suma</label>
-        @endif
-        <form action="/order/{{$order->id}}" method="POST">
-        @csrf <!-- {{ csrf_field() }} -->
-            <input type="hidden" name="_method" value="PUT">
-            <input type="text" class="form-control" name="total" value="{{ $total }}">
-            <br />
-            <button type="submit" class="btn btn-lg btn-success">Aktualizuj zamówienie</button>
-        </form>
+            @include('layouts/cart/cart_save')
 
     </div>
 </div>
