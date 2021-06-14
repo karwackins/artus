@@ -20,8 +20,8 @@ class ProductsController extends Controller
      */
     public function index()
     {
-//        session()->flush();
-//        dd(session()->get('cart'));
+        session()->flush();
+        dd(session()->get('cart'));
         $categories = Category::with('products')->get();
         $plates = Plate::with('products')->get();
 
@@ -113,6 +113,8 @@ class ProductsController extends Controller
                     "nazwa" => $product->nazwa,
                     "quantity" => $quantity[0],
                     "cena" => $product->cena,
+                    "jm" => $product->jm,
+                    "wybor" => $product->wybor,
                 ];
                 session()->put('cart', $cart);
             }
@@ -139,6 +141,7 @@ class ProductsController extends Controller
                         "quantity" => $request->quantity,
                         "jm" => $request->jm,
                         "cena" => $product->cena*$request->quantity,
+                        "wybor" => $product->wybor,
                     ]
                 ];
 
@@ -166,6 +169,7 @@ class ProductsController extends Controller
             "nazwa" => $product->nazwa,
             "quantity" => $request->quantity,
             "jm" => $request->jm,
+            "wybor" => $product->wybor,
             "cena" => $product->cena*$request->quantity,
         ];
 
