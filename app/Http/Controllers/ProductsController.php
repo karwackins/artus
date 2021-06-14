@@ -106,19 +106,18 @@ class ProductsController extends Controller
             $plate = Plate::with('products')->where('id', $request->plate_id)->get();
             foreach ($plate[0]->products as $product)
             {
-                $quantity = Plate_item::where('plate_id', $request->plate_id)->where('product_id', $product->id)->pluck('ilosc');
-//                dd($quantity);
+                $item = Plate_item::where('plate_id', $request->plate_id)->where('product_id', $product->id)->first();
                 $cart[$product->id] = [
                     "id" => $product->id,
                     "nazwa" => $product->nazwa,
-                    "quantity" => $quantity[0],
+                    "quantity" => $item['ilosc'],
                     "cena" => $product->cena,
                     "jm" => $product->jm,
-                    "wybor" => $product->wybor,
+                    "wybor" => $item['wybor'],
                 ];
                 session()->put('cart', $cart);
             }
-            return redirect()->back()->with('success', 'Product added to cart successfully!');
+            return redirect()->back()->with('success', 'Patera dodana do zamówienia');
         }
 
             $id = $request->product_id;
@@ -147,7 +146,7 @@ class ProductsController extends Controller
 
                 session()->put('cart', $cart);
 
-                return redirect()->back()->with('success', 'Product added to cart successfully!');
+                return redirect()->back()->with('success', $product->nazwa. ' dodane do zamowienia');
             }
 
 

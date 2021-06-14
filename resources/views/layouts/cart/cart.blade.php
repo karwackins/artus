@@ -4,8 +4,8 @@
             <table class="table table-striped">
                 <thead>
                 <th>Nazwa</th>
-                <th>ilość</th>
-                <th>cena/szt.</th>
+                <th>Ilość</th>
+                <th>Wartość</th>
                 <th></th>
                 </thead>
                 <tbody>
@@ -13,7 +13,7 @@
                     <?php
                     $total += $details['cena'] * $details['quantity'];
                     ?>
-                    <tr>
+                    <tr {{ $details['wybor'] == 1 ? ' class=table-danger' : '' }}>
                         <td>{{ $details['nazwa'] }}</td>
                         <td>{{ $details['quantity'] }}</td>
                         <td>{{ $details['cena'] * $details['quantity']}} zł</td>
