@@ -39,10 +39,13 @@
                 </td>
                 <td>
                     <div class="d-block">
-
+                        @if($order['status'] == 0)
+                            <a href="/pdf-kitchen/{{$order['id']}}" class="btn-lg btn-primary"><i class="fas fa-fire"></i></a>
+                            <a href="/pdf-customer/{{$order['id']}}" class="btn-lg btn-primary"><i class="fas fa-print"></i></a>
+                        @else
                         <form action="/order/{{$order['id']}}" method="POST">
                             <a href="/pdf-kitchen/{{$order['id']}}" class="btn-lg btn-primary"><i class="fas fa-fire"></i></a>
-                            <button class="btn-lg btn-primary"><i class="fas fa-print"></i></button>
+                            <a href="/pdf-customer/{{$order['id']}}" class="btn-lg btn-primary"><i class="fas fa-print"></i></a>
                             <a href="/edit-customer/{{$order['id']}}" class="btn-lg btn-success"><i class="fas fa-user-edit"></i></a>
                             <a href="/order/{{$order['id']}}/edit" class="btn-lg btn-success"><i class="fas fa-edit"></i></a>
                             <input type="hidden" name="_method" value="DELETE">
@@ -50,6 +53,7 @@
                             <button type="submit" class="btn-lg btn-group-sm btn-danger delete-user"><i class="fas fa-trash-alt"></i></button>
                             <a href="/update-status/{{$order['id']}}" class="btn-lg btn-group-sm btn-primary"><i class="fas fa-check"></i></a>
                         </form>
+                        @endif
                     </div>
                 </td>
             </tr>

@@ -32,6 +32,7 @@ Route::post('/add-to-cart', [ProductsController::class,'addToCart']);
 Route::get('/edit-cart', [ProductsController::class, 'editCart']);
 Route::get('/update-cart', [ProductsController::class, 'updateCart']);
 Route::get('/pdf-kitchen/{id}', [PrinterController::class, 'kitchenPdf']);
+Route::get('/pdf-customer/{id}', [PrinterController::class, 'customerPdf']);
 Route::delete('/remove/{id}', [ProductsController::class, 'remove']);
 
 Route::get('/dashboard', function () {

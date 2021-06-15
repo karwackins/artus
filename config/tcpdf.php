@@ -24,7 +24,7 @@ return [
     //    'blank_image'         => '', // K_BLANK_IMAGE
     //    'creator'             => '', // PDF_CREATOR
     //    'author'              => '', // PDF_AUTHOR
-        'header_title'        => 'Żory, ul. Rybnicka', // PDF_HEADER_TITLE
+//        'header_title'        => 'Żory, ul. Rybnicka'."<br />".'32', // PDF_HEADER_TITLE
     //    'header_string'       => '', // PDF_HEADER_STRING
     //    'page_units'          => '', // PDF_UNIT
     //    'margin_header'       => '', // PDF_MARGIN_HEADER
