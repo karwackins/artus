@@ -31,6 +31,9 @@ class PrinterController extends TCPDF
 // set default header data
 //        $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE . ' 011', PDF_HEADER_STRING);
 
+        $pdf->setPrintHeader(false);
+        $pdf->setPrintFooter(false);
+
 // set header and footer fonts
 //        $pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
         $pdf->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
@@ -73,25 +76,28 @@ class PrinterController extends TCPDF
         );
 // print info
         $pdf->Ln(6);
-        $pdf->Write('0', 'Zamówienie nr: '. $data->id);
-        $pdf->Ln(6);
-        $pdf->Write('0', 'Data dostawy: '. $data->delivery);
-        $pdf->Ln(6);
-        $pdf->Write('0', 'Klient :'. $data->customer_name);
-        $pdf->Ln(6);
-        $pdf->Write('0', 'Telefon :'. $data->customer_tel);
-        $pdf->Ln(6);
-        $pdf->Write('0', 'Uwagi :'. $data->comments);
-        $pdf->Ln(6);
+        $pdf->setFont('','B');
+        $pdf->Write('0', 'Zamówienie nr: ' . $data->id);
         if($data->dowoz == 1)
         {
-            $pdf->Write('0', 'Dowóz do Klienta');
-            $pdf->Ln(6);
+            $pdf->Write('0', ' - Dowóz do Klienta');
+
         }else
         {
-            $pdf->Write('0', 'Odbiór osobisty');
-            $pdf->Ln(6);
+            $pdf->Write('0', ' - Odbiór osobisty');
+
         }
+        $pdf->setFont('');
+        $pdf->Ln(6);
+        $pdf->Write('0', 'Data dostawy: ' . $data->delivery);
+        $pdf->Ln(6);
+        $pdf->Write('0', 'Klient: ' . $data->customer_name);
+        $pdf->Ln(6);
+        $pdf->Write('0', 'Telefon: ' . $data->customer_tel);
+        $pdf->Ln(6);
+        $pdf->Write('0', 'Uwagi: ' . $data->comments);
+        $pdf->Ln(6);
+
 // print colored table
         $pdf->ColoredTable($header, $data);
 
@@ -112,11 +118,11 @@ class PrinterController extends TCPDF
         // Colors, line width and bold font
 //        $this->SetFillColor(255, 0, 0);
         $this->SetTextColor(255);
-        $this->SetDrawColor(128, 0, 0);
-        $this->SetLineWidth(0.3);
+        $this->SetDrawColor(0, 0, 0);
+        $this->SetLineWidth(0.1);
         $this->SetFont('', 'B');
         // Header
-        $w = array(100, 25);
+        $w = array(120, 25);
         $num_headers = count($header);
         for($i = 0; $i < $num_headers; ++$i) {
             $this->Cell($w[$i], 7, $header[$i], 1, 0, 'C', 1);
@@ -131,8 +137,8 @@ class PrinterController extends TCPDF
         $order = json_decode($data->order);
 
         foreach($order as $row) {
-            $this->Cell($w[0], 6, $row->nazwa, 'LR', 0, 'L', $fill);
-            $this->Cell($w[1], 6, $row->quantity, 'LR', 0, 'C', $fill);
+            $this->Cell($w[0], 6, $row->nazwa, 'LR', 0, 'L', $fill,'',1);
+            $this->Cell($w[1], 6, $row->quantity.' '.$row->jm, 'LR', 0, 'C', $fill);
 //            $this->Cell($w[2], 6, number_format($row[2]), 'LR', 0, 'R', $fill);
 //            $this->Cell($w[3], 6, number_format($row[3]), 'LR', 0, 'R', $fill);
 //            $this->Cell($w[4], 6, number_format($row[4]), 'LR', 0, 'R', $fill);
