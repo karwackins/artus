@@ -11,8 +11,14 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Styles -->
+        <style>
+            body {
+                font-family: 'Nunito', sans-serif;
+            }
+        </style>
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link href="{{ asset('fontawesome/css/all.css') }}" rel="stylesheet">
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
@@ -26,13 +32,13 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
                         <a class="nav-link btn-success" href="/customer">
-                            Dodaj zamówienie
+                            <i class="fas fa-plus"></i> Dodaj zamówienie
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="/orders">Zamówienia bieżące</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/orders-history">Zamówienia historyczne</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/orders"><i class="far fa-clock"></i> Zamówienia bieżące</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/orders-history"><i class="fas fa-book"></i> Zamówienia historyczne</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!"><i class="far fa-envelope"></i> Contact</a></li>
                 </ul>
             </div>
         </div>
