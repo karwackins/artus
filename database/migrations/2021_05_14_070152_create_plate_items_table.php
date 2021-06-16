@@ -18,6 +18,7 @@ class CreatePlateItemsTable extends Migration
             $table->foreignId('plate_id')->constrained('plates');
             $table->foreignId('product_id')->constrained('products');
             $table->double('ilosc', 5, 2);
+            $table->integer('wybor')->default(0);
 
         });
     }
