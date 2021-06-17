@@ -24,8 +24,8 @@ return [
     //    'blank_image'         => '', // K_BLANK_IMAGE
     //    'creator'             => '', // PDF_CREATOR
     //    'author'              => '', // PDF_AUTHOR
-//        'header_title'        => 'Żory, ul. Rybnicka'."<br />".'32', // PDF_HEADER_TITLE
-    //    'header_string'       => '', // PDF_HEADER_STRING
+        'header_title'        => 'Zapraszamy ponownie!', // PDF_HEADER_TITLE
+        'header_string'       => "ul. Rybnicka 32\n44-240 Żory\ntel.: 32 43 43 528\nkontakt@restauracja-artus.pl", // PDF_HEADER_STRING
     //    'page_units'          => '', // PDF_UNIT
     //    'margin_header'       => '', // PDF_MARGIN_HEADER
     //    'margin_footer'       => '', // PDF_MARGIN_FOOTER

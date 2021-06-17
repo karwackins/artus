@@ -24,13 +24,14 @@
                     {{$order['date']}}
                 </td>
                 <td>
-                    {{$order['customer_name']}}
+                    {{$order['customer_name']}} <br>
+                    {{$order['customer_address']}}
                 </td>
                 <td>
                     {{$order['customer_tel']}}
                 </td>
                 <td>
-                    {{$order['delivery']}} {{strftime('%a', strtotime(iconv("ISO-8859-2","UTF-8",ucfirst(strftime($order['delivery'])))))}}
+                    {{$order['delivery']}} ({{strftime('%d', strtotime(iconv("ISO-8859-2","UTF-8",ucfirst(strftime($order['delivery'])))))}})
                 </td>
                 <td width="20%">
                     {{$order['comments']}}
