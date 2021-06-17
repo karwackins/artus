@@ -116,6 +116,7 @@ class OrderController extends Controller
                 $order->customer_tel = $request->customer_tel;
                 $order->customer_email = $request->customer_email;
                 $order->delivery = $request->delivery;
+                $order->customer_address = $request->customer_address;
                 $order->dowoz = $dowoz;
                 $order->comments = $request->comments;
             }else
@@ -179,6 +180,7 @@ class OrderController extends Controller
                 "customer_tel" => $request->customer_tel,
                 "customer_email" => $request->customer_email,
                 "delivery" => $request->delivery,
+                "customer_address" => $request->customer_address,
                 "comments" => $request->comments,
                 "dowoz" => $dowoz,
             ];
@@ -196,6 +198,7 @@ class OrderController extends Controller
             "customer_tel" => $order->customer_tel,
             "customer_email" => $order->customer_email,
             "delivery" => $order->delivery,
+            "customer_address" => $order->customer_address,
             "dowoz" => $order->dowoz,
             "comments" => $order->comments
         ];
@@ -215,6 +218,7 @@ class OrderController extends Controller
                 'customer_email' => $customer['customer_email'],
                 'order' => json_encode($items),
                 'delivery' => $customer['delivery'],
+                "customer_address" => $customer['customer_address'],
                 'total' => $request->total,
                 'comments' => $customer['comments'],
                 'dowoz' => $customer['dowoz'],
@@ -224,5 +228,11 @@ class OrderController extends Controller
             session()->flush();
             return redirect('/orders');
 
+        }
+
+        public function cancelOrder()
+        {
+            session()->flush();
+            return redirect('/orders');
         }
 }

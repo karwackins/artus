@@ -138,12 +138,11 @@ class ProductsController extends Controller
                         "id" => $product->id,
                         "nazwa" => $product->nazwa,
                         "quantity" => $request->quantity,
-                        "jm" => $request->jm,
-                        "cena" => $product->cena*$request->quantity,
+                        "jm" => $product->jm,
+                        "cena" => $product->cena,
                         "wybor" => $product->wybor,
                     ]
                 ];
-
                 session()->put('cart', $cart);
 
                 return redirect()->back()->with('success', $product->nazwa. ' dodane do zamowienia');
@@ -167,9 +166,9 @@ class ProductsController extends Controller
             "id" => $product->id,
             "nazwa" => $product->nazwa,
             "quantity" => $request->quantity,
-            "jm" => $request->jm,
+            "jm" => $product->jm,
             "wybor" => $product->wybor,
-            "cena" => $product->cena*$request->quantity,
+            "cena" => $product->cena,
         ];
 
         session()->put('cart', $cart);

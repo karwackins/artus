@@ -93,6 +93,8 @@ class PrinterController extends TCPDF
         $pdf->Ln(6);
         $pdf->Write('0', 'Klient: ' . $data->customer_name);
         $pdf->Ln(6);
+        $pdf->Write('0', 'Adres: ' . $data->customer_address);
+        $pdf->Ln(6);
         $pdf->Write('0', 'Telefon: ' . $data->customer_tel);
         $pdf->Ln(6);
         $pdf->Write('0', 'Uwagi: ' . $data->comments);
@@ -186,6 +188,8 @@ class PrinterController extends TCPDF
         $pdf->Ln(6);
         $pdf->Write('0', 'Klient: ' . $data->customer_name);
         $pdf->Ln(6);
+        $pdf->Write('0', 'Adres: ' . $data->customer_address);
+        $pdf->Ln(6);
 //        $pdf->Write('0', 'Telefon: ' . $data->customer_tel);
 //        $pdf->Ln(6);
 //        $pdf->Write('0', 'Uwagi: ' . $data->comments);
@@ -252,7 +256,7 @@ class PrinterController extends TCPDF
             foreach($order as $row) {
                 $this->Cell($w[0], 6, $row->nazwa, 'LR', 0, 'L', $fill,'',1);
                 $this->Cell($w[1], 6, $row->quantity.' '.$row->jm, 'LR', 0, 'C', $fill);
-                $this->Cell($w[2], 6, $row->cena.' zł', 'LR', 0, 'C', $fill);
+                $this->Cell($w[2], 6, $row->quantity*$row->cena.' zł', 'LR', 0, 'C', $fill);
 //            $this->Cell($w[3], 6, number_format($row[3]), 'LR', 0, 'R', $fill);
 //            $this->Cell($w[4], 6, number_format($row[4]), 'LR', 0, 'R', $fill);
                 $this->Ln();
