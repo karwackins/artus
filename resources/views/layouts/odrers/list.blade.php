@@ -31,7 +31,7 @@
                     {{$order['customer_tel']}}
                 </td>
                 <td>
-                    {{$order['delivery']}} ({{strftime('%d', strtotime(iconv("ISO-8859-2","UTF-8",ucfirst(strftime($order['delivery'])))))}})
+                    {{$order['delivery']}} ({{strftime('%A', strtotime(iconv("ISO-8859-2","UTF-8",ucfirst(strftime($order['delivery'])))))}})
                 </td>
                 <td width="20%">
                     {{$order['comments']}}
