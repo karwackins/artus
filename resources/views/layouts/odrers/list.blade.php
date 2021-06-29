@@ -2,16 +2,17 @@
 
 @section('content')
 <div class="container-fluid">
-    <table class="table table-striped">
+    <div class="table-responsive-md"></div>
+    <table class="table table-striped table-bordered" style="font-size: small">
         <thead>
-            <th>L.p</th>
-            <th>Data</th>
-            <th>Nazwisko zamawiającego</th>
-            <th>Telefon kontaktowy</th>
-            <th>Data realizacji</th>
-            <th>Uwagi</th>
-            <th>Kwota</th>
-            <th>Operacje</th>
+            <th width="5%">L.p</th>
+            <th width="15%">Data</th>
+            <th width="10%">Klient</th>
+            <th width="10%">Telefon</th>
+            <th width="15%">Data realizacji</th>
+            <th width="20%">Uwagi</th>
+            <th width="5%">Kwota</th>
+            <th width="20%" colspan="2">Operacje</th>
         </thead>
         <tbody>
         @foreach($orders as $order)
@@ -23,40 +24,51 @@
                     {{$order['date']}}
                 </td>
                 <td>
-                    {{$order['customer_name']}}
+                    {{$order['customer_name']}} <br>
+                    {{$order['customer_address']}}
                 </td>
                 <td>
                     {{$order['customer_tel']}}
                 </td>
                 <td>
-                    {{$order['delivery']}} {{strftime('%a', strtotime(iconv("ISO-8859-2","UTF-8",ucfirst(strftime($order['delivery'])))))}}
+                    {{$order['delivery']}} ({{strftime('%A', strtotime(iconv("ISO-8859-2","UTF-8",ucfirst(strftime($order['delivery'])))))}})
                 </td>
-                <td>
+                <td width="20%">
                     {{$order['comments']}}
                 </td>
                 <td>
-                    {{$order['total']}}
-                </td>
-                <td>
-                    <a href="/pdf-kitchen/{{$order['id']}}" class="btn-sm btn-outline-primary">Wydruk na kuchnie</a>
-                    <button class="btn-sm btn-outline-primary">Wydruk dla Klienta</button>
+                    {{$order['total']. ' zł' }}
                 </td>
                 <td>
                     <div class="d-block">
+                        @if($order['status'] == 0)
+                            <a href="/pdf-kitchen/{{$order['id']}}" class="btn-lg btn-primary m-1"><i class="fas fa-fire"></i></a>
+                            <a href="/pdf-customer/{{$order['id']}}" class="btn-lg btn-primary m-1"><i class="fas fa-print"></i></a>
+                        @else
                         <form action="/order/{{$order['id']}}" method="POST">
-                            <a href="/edit-customer/{{$order['id']}}" class="btn-sm btn-success">Edycja danych Klienta</a>
-                            <a href="/order/{{$order['id']}}/edit" class="btn-sm btn-success">Edycja zamówienia</a>
-                            <input type="hidden" name="_method" value="DELETE">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <button type="submit" class="btn-sm btn-group-sm btn-danger delete-user">Usuń</button>
-                            <a href="/update-status/{{$order['id']}}" class="btn-sm btn-group-sm btn-primary">Zrealizowane</a>
+                            <div class="container">
+                                <div class="row">
+                                    <a href="/pdf-kitchen/{{$order['id']}}" class="btn-lg btn-primary m-0"><i class="fas fa-fire"></i></a>
+                                    <a href="/pdf-customer/{{$order['id']}}" class="btn-lg btn-primary m-0"><i class="fas fa-print"></i></a>
+                                    <a href="/update-status/{{$order['id']}}" class="btn-lg btn-primary m-0"><i class="fas fa-check"></i></a>
+                                </div>
+                                <div class="row">
+                                    <a href="/edit-customer/{{$order['id']}}" class="btn-lg btn-success m-0"><i class="fas fa-user-edit"></i></a>
+                                    <a href="/order/{{$order['id']}}/edit" class="btn-lg btn-success m-0"><i class="fas fa-edit"></i></a>
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <button type="submit" class="btn-lg btn-group-sm btn-danger delete-user m-0"><i class="fas fa-trash-alt"></i></button>
+                                </div>
+                            </div>
                         </form>
+                        @endif
                     </div>
                 </td>
             </tr>
         @endforeach
         </tbody>
     </table>
+</div>
 </div>
 @endsection
 

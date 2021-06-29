@@ -15,8 +15,8 @@
                     ?>
                     <tr {{ $details['wybor'] == 1 ? ' class=table-danger' : '' }}>
                         <td>{{ $details['nazwa'] }}</td>
-                        <td>{{ $details['quantity'] }}</td>
-                        <td>{{ $details['cena'] * $details['quantity']}} zł</td>
+                        <td>{{ $details['quantity'] }}{{$details['jm']}}</td>
+                        <td>{{ number_format($details['cena'] * $details['quantity'],2)}} zł</td>
                         <td>
                             <form action="/remove/{{$details['id']}}" method="POST">
                                 <input type="hidden" name="_method" value="DELETE">

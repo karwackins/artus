@@ -18,6 +18,7 @@ class CreatePlatesItemsTable extends Migration
             $table->integer('plate_id');
             $table->integer('product_id');
             $table->double('ilosc', 5, 2);
+            $table->integer('wybor')->default(0);
         });
     }
 

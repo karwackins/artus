@@ -18,7 +18,7 @@
                                 <table class="table-sm">
                                     <tr>
                                         <td width="60%">{{ $product->nazwa }}</td>
-                                        <td width="20%"><input type="number" class="form-control" name="quantity" /></td>
+                                        <td width="20%"><input {{ $product->jm == 'kg' || $product->jm == 'l' ? ' type=number step=0.25' : 'type=number step=1' }} class="form-control" name="quantity" /></td>
                                         <td width="20%"><button class="btn btn-outline-success btn-block" type="submit">Dodaj</button></td>
                                     </tr>
                                 </table>

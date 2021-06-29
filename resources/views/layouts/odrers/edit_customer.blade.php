@@ -21,6 +21,9 @@
                         <label for="exampleFormControlInput1" class="form-label">Email Klienta</label>
                         <input type="email" class="form-control{{ $errors->has('customer_email') ? ' is-invalid' : '' }}" name="customer_email" value="{{$customer['customer_email']}}" placeholder="Email Klienta">
                         @error('customer_email') {{$message}} @enderror
+                        <label for="exampleFormControlInput1" class="form-label">Adres Klienta</label>
+                        <input type="text" class="form-control{{ $errors->has('customer_address') ? ' is-invalid' : '' }}" name="customer_address" value="{{$customer['customer_address']}}" placeholder="Adres Klienta">
+                        @error('customer_address') {{$message}} @enderror
                         <label for="exampleFormControlInput1" class="form-label">Data zamówienia</label>
                         <input type="datetime-local" class="form-control{{ $errors->has('delivery') ? ' is-invalid' : '' }}" name="delivery" value="{{date('Y-m-d\TH:i', strtotime($customer['delivery']))}}" placeholder="Data dostawy">
                         @error('delivery') {{$message}} @enderror
@@ -36,6 +39,10 @@
                         <br />
                         <br />
                         <button type="submit" class="btn btn-lg btn-success">Aktualizuj dane Klienta</button>
+                    </form>
+                    <form action="/cancel-order" method="POST">
+                    @csrf <!-- {{ csrf_field() }} -->
+                        <button type="submit" class="btn btn-lg btn-danger">Anuluj</button>
                     </form>
                 </div>
             </div>

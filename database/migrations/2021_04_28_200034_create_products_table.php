@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->double('cena', 5, 2);
             $table->boolean('dostepny');
             $table->float('ilosc');
-            $table->text('j.m');
+            $table->text('jm');
         });
     }
 
