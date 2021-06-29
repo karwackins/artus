@@ -127,7 +127,7 @@ class OrderController extends Controller
                 $order->total = $request->total;
             }
             $order->save();
-            session()->flush();
+            session()->forget('cart');
             return redirect('/orders');
         }
 
@@ -143,7 +143,7 @@ class OrderController extends Controller
         $order = Order::find($id);
         $order->status = 0;
         $order->save();
-        session()->flush();
+        session()->forget('cart');
         return redirect()->back();
     }
 
@@ -157,7 +157,7 @@ class OrderController extends Controller
         {
             $order = Order::find($id);
             $order->delete();
-            session()->flush();
+            session()->forget('cart');
             return redirect('/orders');
         }
 
@@ -225,14 +225,14 @@ class OrderController extends Controller
                 'status' => 1,
             ]);
 
-            session()->flush();
+            session()->forget('cart');
             return redirect('/orders');
 
         }
 
         public function cancelOrder()
         {
-            session()->flush();
+            session()->forget('cart');
             return redirect('/orders');
         }
 }

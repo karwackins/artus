@@ -39,6 +39,12 @@
                     <li class="nav-item"><a class="nav-link" href="/orders"><i class="far fa-clock"></i> Zamówienia bieżące</a></li>
                     <li class="nav-item"><a class="nav-link" href="/orders-history"><i class="fas fa-book"></i> Zamówienia historyczne</a></li>
                     <li class="nav-item"><a class="nav-link" href="#!"><i class="far fa-envelope"></i> Contact</a></li>
+                    <li class="nav-item">
+                        <a href="/logout" class="btn btn-outline-light" title="wyloguj z aplikacji">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </a>
+                    </li>
+
                 </ul>
             </div>
         </div>
