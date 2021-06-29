@@ -163,6 +163,7 @@ class OrderController extends Controller
 
         public function customer()
         {
+            session()->forget('edit');
             return view('layouts/odrers/customer');
         }
 
@@ -185,6 +186,7 @@ class OrderController extends Controller
                 "dowoz" => $dowoz,
             ];
             session()->put('customer', $customer);
+
 
             return redirect('/order');
         }

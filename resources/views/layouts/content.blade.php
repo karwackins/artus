@@ -8,6 +8,7 @@
         <div class="card">
             <div class="card-header">
                 Dane Klienta
+                {{ session('edit') }}
             </div>
             <div class="card-body">
                 <?php $customer = session()->get('customer'); ?>

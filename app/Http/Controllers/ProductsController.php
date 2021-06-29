@@ -183,7 +183,6 @@ class ProductsController extends Controller
     public function updateCart()
     {
         $cart = session()->get('cart');
-        $cart['edit'] = 0;
         session()->put('cart', $cart);
         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
