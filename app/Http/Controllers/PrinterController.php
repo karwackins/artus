@@ -226,7 +226,7 @@ class PrinterController extends TCPDF
             $w = array(120, 25);
         }else
         {
-            $w = array(100, 18, 12);
+            $w = array(100, 18, 15);
         }
         $num_headers = count($header);
         for($i = 0; $i < $num_headers; ++$i) {
