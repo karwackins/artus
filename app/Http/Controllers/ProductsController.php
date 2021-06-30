@@ -157,7 +157,7 @@ class ProductsController extends Controller
 
             session()->put('cart', $cart);
 
-            return redirect()->back()->with('success', 'Product added to cart successfully!');
+            return redirect()->back()->with('success', $request->nazwa.' dodany do zamówienia');
 
         }
 
@@ -172,7 +172,7 @@ class ProductsController extends Controller
         ];
 
         session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+        return redirect()->back()->with('success', $product->nazwa.' dodany do zamówienia');
     }
 
     public function editCart()
@@ -184,7 +184,7 @@ class ProductsController extends Controller
     {
         $cart = session()->get('cart');
         session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+        return redirect()->back()->with('success', 'Zamówienie zauktualizowane!');
     }
     public function remove(Request $request)
     {
