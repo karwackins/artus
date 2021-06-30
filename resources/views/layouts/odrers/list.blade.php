@@ -10,8 +10,8 @@
             <th width="10%">Klient</th>
             <th width="10%">Telefon</th>
             <th width="15%">Data realizacji</th>
-            <th width="20%">Uwagi</th>
-            <th width="5%">Kwota</th>
+            <th width="17%">Uwagi</th>
+            <th width="8%">Kwota</th>
             <th width="20%" colspan="2">Operacje</th>
         </thead>
         <tbody>

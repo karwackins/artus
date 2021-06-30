@@ -203,7 +203,7 @@ class PrinterController extends TCPDF
 // ---------------------------------------------------------
 
 // close and output PDF document
-        $pdf->Output('example_011.pdf', 'I');
+        $pdf->Output('zamowienie.pdf', 'I');
     }
 
     // Load table data from file
@@ -226,7 +226,7 @@ class PrinterController extends TCPDF
             $w = array(120, 25);
         }else
         {
-            $w = array(100, 15, 15);
+            $w = array(100, 18, 12);
         }
         $num_headers = count($header);
         for($i = 0; $i < $num_headers; ++$i) {
