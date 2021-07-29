@@ -5,22 +5,20 @@
                 <label for="suma">Suma:</label>
                 <input type="text" class="form-control" name="total" value="{{ number_format($total, 2) }}">
                 <br />
-                <button type="submit" class="btn btn-lg btn-success">Aktualizuj zamówienie</button>
+                <div class="mt-2">
+                    <button type="submit" class="btn btn-lg btn-success d-inline">Aktualizuj zamówienie</button>
+                    <a href="/cancel-order" class="btn btn-lg btn-danger d-inline">Anuluj</a>
+                </div>
      </form>
-    <form action="/cancel-order" method="POST">
-    @csrf <!-- {{ csrf_field() }} -->
-        <button type="submit" class="btn btn-lg btn-danger">Anuluj</button>
-    </form>
 @else
     <form action="/save-order" method="POST">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <label for="suma">Suma</label>
         <input type="text" name="total" class="form-control" value="{{ number_format($total, 2) }}">
         <hr>
-        <button type="submit" class="btn btn-lg btn-success">Zapisz zamówienie</button>
-    </form>
-    <form action="/cancel-order" method="POST">
-    @csrf <!-- {{ csrf_field() }} -->
-        <button type="submit" class="btn btn-lg btn-danger">Anuluj</button>
+        <div class="mt-2">
+            <button type="submit" class="btn btn-lg btn-success d-inline">Zapisz zamówienie</button>
+            <a href="/cancel-order" class="btn btn-lg btn-danger d-inline">Anuluj</a>
+        </div>
     </form>
 @endif

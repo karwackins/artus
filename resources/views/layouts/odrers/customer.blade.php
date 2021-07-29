@@ -34,14 +34,15 @@
                         <textarea class="form-control m-3" name="comments" id="" cols="30" rows="5" placeholder="Uwagi"></textarea>
                         <br />
                         <input type="checkbox" name="dowoz" checked value="1"> Dowóz do Klienta
-                        <br />
-                        <br />
-                        <button type="submit" class="btn btn-lg btn-success">Dalej</button>
+                        <div class="mt-2">
+                            <button type="submit" class="btn btn-lg btn-success d-inline">Dalej</button>
+                            <a href="/cancel-order" class="btn btn-lg btn-danger d-inline">Anuluj</a>
+                        </div>
                     </form>
-                    <form action="/cancel-order" method="POST">
-                    @csrf <!-- {{ csrf_field() }} -->
-                        <button type="submit" class="btn btn-lg btn-danger">Anuluj</button>
-                    </form>
+                    {{--                    <form class="d-inline" action="/cancel-order" method="POST">--}}
+{{--                    @csrf <!-- {{ csrf_field() }} -->--}}
+{{--                        <button type="submit" class="btn btn-lg btn-danger d-inline">Anuluj</button>--}}
+{{--                    </form>--}}
                 </div>
             </div>
         </div>

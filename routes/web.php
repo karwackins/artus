@@ -29,7 +29,7 @@ Route::get('/customer', [OrderController::class, 'customer']);
 Route::post('/add-customer', [OrderController::class, 'addCustomer']);
 Route::get('/edit-customer/{id}', [OrderController::class, 'editCustomer']);
 Route::post('/save-order', [OrderController::class, 'saveOrder']);
-Route::post('/cancel-order', [OrderController::class, 'cancelOrder']);
+Route::get('/cancel-order', [OrderController::class, 'cancelOrder']);
 Route::get('/update-status/{id}', [OrderController::class, 'updateStatus']);
 Route::post('/add-to-cart', [ProductsController::class,'addToCart']);
 Route::get('/edit-cart', [ProductsController::class, 'editCart']);

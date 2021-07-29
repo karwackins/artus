@@ -36,13 +36,11 @@
                         @else
                             <input type="checkbox" name="dowoz" value="1"> Dowóz do Klienta
                         @endif
-                        <br />
-                        <br />
-                        <button type="submit" class="btn btn-lg btn-success">Aktualizuj dane Klienta</button>
-                    </form>
-                    <form action="/cancel-order" method="POST">
-                    @csrf <!-- {{ csrf_field() }} -->
-                        <button type="submit" class="btn btn-lg btn-danger">Anuluj</button>
+
+                        <div class="mt-2">
+                            <button type="submit" class="btn btn-lg btn-success d-inline">Aktualizuj dane Klienta</button>
+                            <a href="/cancel-order" class="btn btn-lg btn-danger d-inline">Anuluj</a>
+                        </div>
                     </form>
                 </div>
             </div>
