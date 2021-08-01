@@ -18,10 +18,6 @@
                         <input type="text" class="form-control{{ $errors->has('customer_tel') ? ' is-invalid' : '' }}" name="customer_tel" value="{{ old('customer_tel') }}" placeholder="Numer telefonu">
                         @error('customer_tel') {{$message}} @enderror
                         <br>
-                        <label for="exampleFormControlInput1" class="form-label">Email Klienta</label>
-                        <input type="text" class="form-control{{ $errors->has('customer_email') ? ' is-invalid' : '' }}" name="customer_email" value="{{ old('customer_email') }}" placeholder="Email Klienta">
-                        @error('customer_email') {{$message}} @enderror
-                        <br>
                         <label for="exampleFormControlInput1" class="form-label">Adres Klienta</label>
                         <input type="text" class="form-control{{ $errors->has('customer_address') ? ' is-invalid' : '' }}" name="customer_address" value="{{ old('customer_address') }}" placeholder="Adres Klienta">
                         @error('customer_address') {{$message}} @enderror

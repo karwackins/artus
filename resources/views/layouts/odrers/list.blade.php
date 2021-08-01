@@ -35,6 +35,8 @@
                 </td>
                 <td width="20%">
                     {{$order['comments']}}
+                    <hr>
+                    {{$order['order_comments']}}
                 </td>
                 <td>
                     {{$order['total']. ' zł' }}
@@ -42,23 +44,23 @@
                 <td>
                     <div class="d-block">
                         @if($order['status'] == 0)
-                            <a href="/pdf-kitchen/{{$order['id']}}" class="btn-lg btn-primary m-1"><i class="fas fa-fire"></i></a>
-                            <a href="/pdf-customer/{{$order['id']}}" class="btn-lg btn-primary m-1"><i class="fas fa-print"></i></a>
+                            <a href="/pdf-kitchen/{{$order['id']}}" class="btn btn-primary m-1"><i class="fas fa-fire"></i></a>
+                            <a href="/pdf-customer/{{$order['id']}}" class="btn btn-primary m-1"><i class="fas fa-print"></i></a>
                         @else
                         <form action="/order/{{$order['id']}}" method="POST">
                             <div class="container">
                                 <div class="row">
-                                    <a href="/pdf-kitchen/{{$order['id']}}" class="btn-lg btn-primary m-0"><i class="fas fa-fire"></i></a>
-                                    <a href="/pdf-customer/{{$order['id']}}" class="btn-lg btn-primary m-0"><i class="fas fa-print"></i></a>
-                                    <a href="/update-status/{{$order['id']}}" class="btn-lg btn-primary m-0"><i class="fas fa-check"></i></a>
-                                </div>
-                                <div class="row">
-                                    <a href="/edit-customer/{{$order['id']}}" class="btn-lg btn-success m-0"><i class="fas fa-user-edit"></i></a>
-                                    <a href="/order/{{$order['id']}}/edit" class="btn-lg btn-success m-0"><i class="fas fa-edit"></i></a>
+                                    <a href="/pdf-kitchen/{{$order['id']}}" class="btn btn-primary m-1"><i class="fas fa-fire"></i></a>
+                                    <a href="/pdf-customer/{{$order['id']}}" class="btn btn-primary m-1"><i class="fas fa-print"></i></a>
+                                    <a href="/update-status/{{$order['id']}}" class="btn btn-primary m-1"><i class="fas fa-check"></i></a>
+{{--                                </div>--}}
+{{--                                <div class="row">--}}
+                                    <a href="/edit-customer/{{$order['id']}}" class="btn btn-success m-1"><i class="fas fa-user-edit"></i></a>
+                                    <a href="/order/{{$order['id']}}/edit" class="btn btn-success m-1"><i class="fas fa-edit"></i></a>
                                     <input type="hidden" name="_method" value="DELETE">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    <button type="submit" class="btn-lg btn-group-sm btn-danger delete-user m-0"><i class="fas fa-trash-alt"></i></button>
-                                </div>
+                                    <button type="submit" class="btn btn-group-sm btn-danger delete-user m-0"><i class="fas fa-trash-alt"></i></button>
+{{--                                </div>--}}
                             </div>
                         </form>
                         @endif

@@ -97,11 +97,14 @@ class PrinterController extends TCPDF
         $pdf->Ln(6);
         $pdf->Write('0', 'Telefon: ' . $data->customer_tel);
         $pdf->Ln(6);
-        $pdf->Write('0', 'Uwagi: ' . $data->comments);
+        $pdf->Write('0', 'Uwagi dot. Klienta: ' . $data->comments);
         $pdf->Ln(6);
 
 // print colored table
         $pdf->ColoredTable($header, $data);
+        $pdf->Ln(6);
+        $pdf->Write('0', 'Uwagi dot. zamówienia: ' . $data->order_comments);
+
 
 // ---------------------------------------------------------
 

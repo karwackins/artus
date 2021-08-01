@@ -14,11 +14,12 @@ class Order extends Model
     protected $fillable = ['date',
       'user_id',
 'customer_name',
- 'customer_tel', 'customer_email', 'customer_address',
+ 'customer_tel', 'customer_address',
         'order',
      'delivery',
      'comments',
+        'order_comments',
      'dowoz',
-       'status',
+        'status',
         'total'];
 }

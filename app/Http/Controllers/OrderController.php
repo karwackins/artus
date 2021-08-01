@@ -108,13 +108,11 @@ class OrderController extends Controller
                 $data = request()->validate([
                     "customer_name" => 'required',
                     "customer_tel" => 'required',
-                    "customer_email" => 'required|email',
                     "delivery" => 'required',
                 ]);
 
                 $order->customer_name = $request->customer_name;
                 $order->customer_tel = $request->customer_tel;
-                $order->customer_email = $request->customer_email;
                 $order->delivery = $request->delivery;
                 $order->customer_address = $request->customer_address;
                 $order->dowoz = $dowoz;
@@ -125,6 +123,7 @@ class OrderController extends Controller
 //                $total = session()->get('total');
                 $order->order = json_encode($items);
                 $order->total = $request->total;
+                $order->order_comments = $request->order_comments;
             }
             $order->save();
             session()->forget('cart');
@@ -172,14 +171,12 @@ class OrderController extends Controller
             $data = request()->validate([
                 "customer_name" => 'required',
                 "customer_tel" => 'required',
-                "customer_email" => 'required|email',
                 "delivery" => 'required',
             ]);
             $dowoz = $request->dowoz?$request->dowoz:0;
             $customer = [
                 "customer_name" => $request->customer_name,
                 "customer_tel" => $request->customer_tel,
-                "customer_email" => $request->customer_email,
                 "delivery" => $request->delivery,
                 "customer_address" => $request->customer_address,
                 "comments" => $request->comments,
@@ -198,7 +195,6 @@ class OrderController extends Controller
             "order_id" => $order->id,
             "customer_name" => $order->customer_name,
             "customer_tel" => $order->customer_tel,
-            "customer_email" => $order->customer_email,
             "delivery" => $order->delivery,
             "customer_address" => $order->customer_address,
             "dowoz" => $order->dowoz,
@@ -217,11 +213,11 @@ class OrderController extends Controller
                 'user_id' => '1',
                 'customer_name' => $customer['customer_name'],
                 'customer_tel' => $customer['customer_tel'],
-                'customer_email' => $customer['customer_email'],
                 'order' => json_encode($items),
                 'delivery' => $customer['delivery'],
                 "customer_address" => $customer['customer_address'],
                 'total' => $request->total,
+                'order_comments' => $request->order_comments,
                 'comments' => $customer['comments'],
                 'dowoz' => $customer['dowoz'],
                 'status' => 1,

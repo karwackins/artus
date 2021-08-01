@@ -15,7 +15,6 @@
                 @if(session('customer'))
                 {{ $customer['customer_name'] }}<br>
                     {{ $customer['customer_tel'] }}<br>
-                {{ $customer['customer_email'] }}<br>
                     @endif
 
             </div>
