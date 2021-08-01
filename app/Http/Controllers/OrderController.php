@@ -163,7 +163,7 @@ class OrderController extends Controller
 
         public function customer()
         {
-            session()->forget('edit');
+            session()->forget(['edit', 'cart']);
             return view('layouts/odrers/customer');
         }
 

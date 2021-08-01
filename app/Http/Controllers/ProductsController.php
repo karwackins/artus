@@ -107,10 +107,18 @@ class ProductsController extends Controller
             foreach ($plate[0]->products as $product)
             {
                 $item = Plate_item::where('plate_id', $request->plate_id)->where('product_id', $product->id)->first();
+                if(isset($cart[$product->id])) {
+
+                    $quantity = $cart[$product->id]['quantity'] + $item['ilosc'];
+
+                }else
+                {
+                    $quantity = $item['ilosc'];
+                }
                 $cart[$product->id] = [
                     "id" => $product->id,
                     "nazwa" => $product->nazwa,
-                    "quantity" => $item['ilosc'],
+                    "quantity" => $quantity,
                     "cena" => $product->cena,
                     "jm" => $product->jm,
                     "wybor" => $item['wybor'],
@@ -153,7 +161,7 @@ class ProductsController extends Controller
         // if cart not empty then check if this product exist then increment quantity
         if(isset($cart[$id])) {
 
-            $cart[$id]['quantity'] = $request->quantity;
+            $cart[$id]['quantity'] = $cart[$id]['quantity'] + $request->quantity;
 
             session()->put('cart', $cart);
 
