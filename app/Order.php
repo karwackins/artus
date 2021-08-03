@@ -21,5 +21,6 @@ class Order extends Model
         'order_comments',
      'dowoz',
         'status',
+        'delivery_cost',
         'total'];
 }

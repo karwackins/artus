@@ -9,7 +9,10 @@
                 <th></th>
                 </thead>
                 <tbody>
-                @foreach(session('cart') as $id => $details)
+                @php
+                    $cart = collect(session('cart'));
+                @endphp
+                @foreach($cart->sortBy('category_id') as $id => $details)
                     <?php
                     $total += $details['cena'] * $details['quantity'];
                     ?>

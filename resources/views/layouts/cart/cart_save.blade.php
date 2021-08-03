@@ -4,6 +4,17 @@
                 <input type="hidden" name="_method" value="PUT">
                 <label for="suma">Suma:</label>
                 <input type="text" class="form-control" name="total" value="{{ number_format($total, 2) }}">
+                @if($order->dowoz == 1)
+                <div>
+                    <label for="suma">Koszt dowozu</label>
+                    <input type="text" name="delivery_cost" class="form-control" value="{{ number_format($order->delivery_cost, 2) }}">
+                </div>
+                @else
+                    <div>
+                        <label for="suma">Koszt dowozu</label>
+                        <input type="text" name="delivery_cost" class="form-control" readonly value="0.00">
+                    </div>
+                    @endif
                 <div class="mt-2">
                     <label for="order_comments">Uwagi do zamówienia</label>
                     <textarea class="form-control" name="order_comments">{{ $order->order_comments }}</textarea>
@@ -18,6 +29,12 @@
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <label for="suma">Suma</label>
         <input type="text" name="total" class="form-control" value="{{ number_format($total, 2) }}">
+{{--        @if(isset($order->dowoz))--}}
+{{--        <div>--}}
+{{--            <label for="suma">Koszt dowozu</label>--}}
+{{--            <input type="text" name="delivery_cost" class="form-control" value="{{ number_format($delivery_cost, 2) }}">--}}
+{{--        </div>--}}
+{{--        @endif--}}
         <div class="mt-2">
             <label for="order_comments">Uwagi do zamówienia</label>
             <textarea class="form-control" name="order_comments"></textarea>

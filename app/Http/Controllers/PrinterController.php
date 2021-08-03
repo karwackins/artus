@@ -201,7 +201,10 @@ class PrinterController extends TCPDF
 // print colored table
         $pdf->ColoredTable($header, $data);
         $pdf->Ln(6);
-        $pdf->Write('0', 'Suma: ' . $data->total.' zł');
+        if($data->dowoz == 1)
+            $pdf->Write('0', 'Suma: ' . ($data->total + $data->delivery_cost) .' zł (Koszt dowozu: '.$data->delivery_cost.' zł)');
+        else
+            $pdf->Write('0', 'Suma: ' . $data->total.' zł');
 
 // ---------------------------------------------------------
 

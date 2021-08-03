@@ -38,9 +38,16 @@
                     <hr>
                     {{$order['order_comments']}}
                 </td>
+                @if(isset($order['delivery_cost']))
                 <td>
-                    {{$order['total']. ' zł' }}
+                    {{$order['total'] + $order['delivery_cost']. ' zł' }}<br>
+                    (Koszt dostawy: {{$order['delivery_cost']. ' zł'}})
                 </td>
+                @else
+                    <td>
+                        {{$order['total']. ' zł' }}<br>
+                    </td>
+                @endif
                 <td>
                     <div class="d-block">
                         @if($order['status'] == 0)

@@ -122,6 +122,7 @@ class ProductsController extends Controller
                     "cena" => $product->cena,
                     "jm" => $product->jm,
                     "wybor" => $item['wybor'],
+                    "category_id" => $product->category_id,
                 ];
                 session()->put('cart', $cart);
             }
@@ -149,6 +150,7 @@ class ProductsController extends Controller
                         "jm" => $product->jm,
                         "cena" => $product->cena,
                         "wybor" => $product->wybor,
+                        "category_id" => $product->category_id,
                     ]
                 ];
                 session()->put('cart', $cart);
@@ -177,6 +179,7 @@ class ProductsController extends Controller
             "jm" => $product->jm,
             "wybor" => $product->wybor,
             "cena" => $product->cena,
+            "category_id" => $product->category_id,
         ];
 
         session()->put('cart', $cart);

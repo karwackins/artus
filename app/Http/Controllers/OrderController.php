@@ -123,6 +123,7 @@ class OrderController extends Controller
 //                $total = session()->get('total');
                 $order->order = json_encode($items);
                 $order->total = $request->total;
+                $order->delivery_cost = $request->delivery_cost;
                 $order->order_comments = $request->order_comments;
             }
             $order->save();
@@ -215,6 +216,7 @@ class OrderController extends Controller
                 'customer_tel' => $customer['customer_tel'],
                 'order' => json_encode($items),
                 'delivery' => $customer['delivery'],
+                'delivery_cost' => $request['delivery_cost'],
                 "customer_address" => $customer['customer_address'],
                 'total' => $request->total,
                 'order_comments' => $request->order_comments,
