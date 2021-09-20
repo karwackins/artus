@@ -123,6 +123,7 @@ class ProductsController extends Controller
                     "jm" => $product->jm,
                     "wybor" => $item['wybor'],
                     "category_id" => $product->category_id,
+                    "pozycja" => $item->pozycja,
                 ];
                 session()->put('cart', $cart);
             }
@@ -151,6 +152,7 @@ class ProductsController extends Controller
                         "cena" => $product->cena,
                         "wybor" => $product->wybor,
                         "category_id" => $product->category_id,
+                        "pozycja" => $product->pozycja,
                     ]
                 ];
                 session()->put('cart', $cart);
@@ -180,6 +182,7 @@ class ProductsController extends Controller
             "wybor" => $product->wybor,
             "cena" => $product->cena,
             "category_id" => $product->category_id,
+            "pozycja" => $product->pozycja,
         ];
 
         session()->put('cart', $cart);
@@ -207,5 +210,23 @@ class ProductsController extends Controller
             }
         }
         return redirect()->back()->with('success', 'Product usuniety');
+    }
+
+
+    public function updateCartItem(Request $request)
+    {
+        $items = session()->get('cart');
+        foreach ($items as $i)
+        {
+            if($request->itemId == $i['id'])
+            {
+                $i['quantity'] = $request->newQuantity;
+                $i['comments_to_item'] = $request->commentsToItem;
+                unset($items[$request->itemId]);
+                $items[$request->itemId] = $i;
+                session()->put('cart', $items);
+            }
+        }
+        return redirect()->back();
     }
 }

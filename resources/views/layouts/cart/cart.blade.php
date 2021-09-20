@@ -12,12 +12,17 @@
                 @php
                     $cart = collect(session('cart'));
                 @endphp
-                @foreach($cart->sortBy('category_id') as $id => $details)
+                @foreach($cart->sortBy('category_id')->sortBy('pozycja') as $id => $details)
                     <?php
                     $total += $details['cena'] * $details['quantity'];
                     ?>
                     <tr {{ $details['wybor'] == 1 ? ' class=table-danger' : '' }}>
-                        <td>{{ $details['nazwa'] }}</td>
+                        <td>{{ $details['nazwa'] }}
+                            @if(isset($details['comments_to_item']))
+                                <hr>
+                                {{ $details['comments_to_item'] }}
+                            @endif
+                        </td>
                         <td>{{ $details['quantity'] }}{{$details['jm']}}</td>
                         <td>{{ number_format($details['cena'] * $details['quantity'],2)}} zł</td>
                         <td>
@@ -28,6 +33,18 @@
                             </form>
                         </td>
                     </tr>
+                    <tr>
+                        <form method="POST" action="/update-cart-item">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="itemId" value="{{ $id }}">
+
+                                <td><input name = "commentsToItem" class="form-control small" placeholder="Uwagi"></td>
+                                <td><input name = "newQuantity" class="form-control small"></td>
+                                <td></td>
+                                <td><button type="submit" class="small btn btn-sm btn-success">Zapisz</button></td>
+                        </form>
+                    </tr>
+
 
                 @endforeach
                 <?php  session()->put('total', $total); ?>
