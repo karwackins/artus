@@ -71,8 +71,8 @@ class PrinterController extends TCPDF
         $data = $pdf->LoadData($id);
         // column titles
         $header = array(
-            '0' => 'Nazwa',
-            '1' => 'Ilość',
+            '0' => 'Ilość',
+            '1' => 'Nazwa',
         );
 // print info
         $pdf->Ln(6);
@@ -89,7 +89,7 @@ class PrinterController extends TCPDF
         }
         $pdf->setFont('');
         $pdf->Ln(6);
-        $pdf->Write('0', 'Data dostawy: ' . $data->delivery);
+//        $pdf->Write('0', 'Data dostawy: ' . $data->delivery);
         $pdf->Ln(6);
         $pdf->Write('0', 'Klient: ' . $data->customer_name);
         $pdf->Ln(6);
@@ -170,7 +170,6 @@ class PrinterController extends TCPDF
         $header = array(
             '0' => 'Nazwa',
             '1' => 'Ilość',
-            '2' => 'Cena',
         );
 // print info
         $pdf->Ln(6);
@@ -187,7 +186,7 @@ class PrinterController extends TCPDF
         }
         $pdf->setFont('');
         $pdf->Ln(6);
-        $pdf->Write('0', 'Data dostawy: ' . $data->delivery);
+//        $pdf->Write('0', 'Data dostawy: ' . $data->delivery);
         $pdf->Ln(6);
         $pdf->Write('0', 'Klient: ' . $data->customer_name);
         $pdf->Ln(6);
@@ -227,12 +226,12 @@ class PrinterController extends TCPDF
         $this->SetLineWidth(0.1);
         $this->SetFont('', 'B');
         // Header
-        if(count($header) == 2)
+        if($header[0] == 'Ilość')
         {
-            $w = array(120, 25);
+            $w = array(25, 120);
         }else
         {
-            $w = array(100, 18, 15);
+            $w = array(115, 18);
         }
         $num_headers = count($header);
         for($i = 0; $i < $num_headers; ++$i) {
@@ -246,11 +245,11 @@ class PrinterController extends TCPDF
         // Data
         $fill = 0;
         $order = json_decode($data->order);
-        if($num_headers == 2)
+        if($header[0] == 'Ilość')
         {
             foreach($order as $row) {
-                $this->Cell($w[0], 6, $row->nazwa, 'LR', 0, 'L', $fill,'',1);
-                $this->Cell($w[1], 6, $row->quantity.' '.$row->jm, 'LR', 0, 'C', $fill);
+                $this->Cell($w[0], 6, $row->quantity.' '.'x', 'LR', 0, 'C', $fill);
+                $this->Cell($w[1], 6, $row->nazwa, 'LR', 0, 'L', $fill,'',1);
 //            $this->Cell($w[2], 6, number_format($row[2]), 'LR', 0, 'R', $fill);
 //            $this->Cell($w[3], 6, number_format($row[3]), 'LR', 0, 'R', $fill);
 //            $this->Cell($w[4], 6, number_format($row[4]), 'LR', 0, 'R', $fill);
@@ -262,7 +261,7 @@ class PrinterController extends TCPDF
             foreach($order as $row) {
                 $this->Cell($w[0], 6, $row->nazwa, 'LR', 0, 'L', $fill,'',1);
                 $this->Cell($w[1], 6, $row->quantity.' '.$row->jm, 'LR', 0, 'C', $fill);
-                $this->Cell($w[2], 6, $row->quantity*$row->cena.' zł', 'LR', 0, 'C', $fill);
+//                $this->Cell($w[2], 6, $row->quantity*$row->cena.' zł', 'LR', 0, 'C', $fill);
 //            $this->Cell($w[3], 6, number_format($row[3]), 'LR', 0, 'R', $fill);
 //            $this->Cell($w[4], 6, number_format($row[4]), 'LR', 0, 'R', $fill);
                 $this->Ln();
