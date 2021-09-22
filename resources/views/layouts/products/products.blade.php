@@ -1,4 +1,4 @@
- <div id="accordion">
+<div id="accordion">
         @foreach($categories as $category )
             <?php $loop_index = $loop->index?>
             <div class="card">

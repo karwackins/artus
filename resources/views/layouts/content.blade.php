@@ -21,7 +21,7 @@
         </div>
 
         <!-- Content Row-->
-        <div class="row justify-content-center d-grid">
+        <div class="row justify-content-center d-grid mt-10">
             <div class="col overflow-scroll" style="height: 500px">
                 @include('layouts/products/plates')
                 @include('layouts/products/products')
